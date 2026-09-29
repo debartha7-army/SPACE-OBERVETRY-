@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: cosmos-tracker-backend
+    env: node
+    rootDir: cosmos-tracker/backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: SUPABASE_URL
+        value: https://vkxthcsfgvctupszefhd.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZreHRoY3NmZ3ZjdHVwc3plZmhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2NDUyODEsImV4cCI6MjEwNjIyMTI4MX0.7lQzCfKaVvATiv5_a90VKjKLYwlIb2A7YeMq5lFPbUc
