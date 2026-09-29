@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS favorites (
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   item_type VARCHAR(50) NOT NULL,
   item_id VARCHAR(100) NOT NULL,
+  item_title TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(user_id, item_type, item_id)
 );
@@ -138,7 +139,8 @@ CREATE INDEX IF NOT EXISTS idx_reminders_user ON event_reminders(user_id);
 -- User: stargazer@cosmostracker.org / Stargazer2026!
 INSERT INTO users (id, name, email, password_hash, role) VALUES
   ('a1b2c3d4-0001-4000-8000-000000000001', 'Cosmos Administrator', 'admin@cosmostracker.org', '$2b$10$SBXxip/Cm3IZq81yvpHe0uqHz4jFMaM/Uyg/6DpBhFEBSCl/.pE.C', 'admin'),
-  ('a1b2c3d4-0002-4000-8000-000000000002', 'Amateur Stargazer', 'stargazer@cosmostracker.org', '$2b$10$cU0OyJ/.9T6bkl1CKXin1Octp0NI3kxDCqqH3LpJNtqbXDVnc/gEq', 'user')
+  ('a1b2c3d4-0002-4000-8000-000000000002', 'Amateur Stargazer', 'stargazer@cosmostracker.org', '$2b$10$cU0OyJ/.9T6bkl1CKXin1Octp0NI3kxDCqqH3LpJNtqbXDVnc/gEq', 'user'),
+  ('a1b2c3d4-0003-4000-8000-000000000003', 'Debartha Ghosh', 'debarthaghosh262@gmail.com', '$2b$10$SBXxip/Cm3IZq81yvpHe0uqHz4jFMaM/Uyg/6DpBhFEBSCl/.pE.C', 'admin')
 ON CONFLICT (email) DO NOTHING;
 
 -- Celestial Events
